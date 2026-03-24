@@ -128,3 +128,40 @@ int     count_digits_base(int num, int base_len)
 	}
 	return (digits);
 }
+
+#include <stdio.h>
+void    test(char *nbr, char *base_from, char *base_to)
+{
+    char *res;
+
+    res = ft_convert_base(nbr, base_from, base_to);
+    if (res == NULL)
+        printf("Invalid base or malloc failed\n");
+    else
+    {
+        printf("Convert '%s': from base '%s' -> to base '%s' | Result: %s\n", nbr, base_from, base_to, res);
+        free(res);
+    }
+}
+
+int     main(void)
+{
+    printf("--- Simple Cases ---\n");
+    test("42", "0123456789", "01");              // Decimal to Binary
+    test("101010", "01", "0123456789");          // Binary to Decimal
+    test("ff", "0123456789abcdef", "0123456789"); // Hex to Decimal
+    test("  -2a", "0123456789abcdef", "01");     // Hex to Binary
+
+    printf("\n--- Edge Cases ---\n");
+    test("0", "0123456789", "0123456789abcdef"); // Zero
+    test("-2147483648", "0123456789", "0123456789"); // INT_MIN
+    test("2147483647", "0123456789", "0123456789");  // INT_MAX
+
+    printf("\n--- Invalid Bases ---\n");
+    test("10", "0", "0123456789");               // base_from too short
+    test("10", "0123456789", "0123456+");        // forbidden char on base_to
+    test("10", "011", "0123456789");             // base_from with duplicates
+    test("10", "0123456789", " ");               // base_to with spaces
+
+    return (0);
+}
