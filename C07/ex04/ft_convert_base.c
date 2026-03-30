@@ -1,24 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_convert_base.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/30 19:18:07 by lbalderr          #+#    #+#             */
+/*   Updated: 2026/03/30 19:28:04 by lbalderr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-int     is_valid_base(char *base);
-int     index_of(char *str, char c);
-int     ft_atoi_base(char *str, char *base);
-int     count_digits_base(int num, int base_len);
-char    *ft_convert_base(char *nbr, char *base_from, char *base_to);
+int		is_valid_base(char *base);
+int		index_of(char *str, char c);
+int		ft_atoi_base(char *str, char *base);
+int		count_digits_base(int num, int base_len);
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
 
-char    *ft_convert_base(char *nbr, char *base_from, char *base_to)
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	long	nbr_decimal;
-	int     digits_count;
-	int     base_to_len;
-	char    *result;
+	int		digits_count;
+	int		base_to_len;
+	char	*result;
 
 	base_to_len = is_valid_base(base_to);
-	if (!is_valid_base(base_from) || !base_to_len) return (NULL);
+	if (!is_valid_base(base_from) || !base_to_len)
+		return (NULL);
 	nbr_decimal = ft_atoi_base(nbr, base_from);
 	digits_count = count_digits_base(nbr_decimal, base_to_len);
 	result = malloc(sizeof(char) * (digits_count + 1));
-	if (!result) return (NULL);
 	result[digits_count] = '\0';
 	if (nbr_decimal < 0)
 	{
@@ -36,10 +48,10 @@ char    *ft_convert_base(char *nbr, char *base_from, char *base_to)
 }
 
 // checks if base is valid and returns its length, or 0 if not valid
-int     is_valid_base(char *base)
+int	is_valid_base(char *base)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (base[i])
@@ -62,13 +74,14 @@ int     is_valid_base(char *base)
 	return (i);
 }
 
-// takes a string representing a number in a given base and converts it to a base 10 int
-int     ft_atoi_base(char *str, char *base)
+// takes a string representing a number in a given base 
+// and converts it to a base 10 int
+int	ft_atoi_base(char *str, char *base)
 {
-	int i;
-	int sign;
-	int result;
-	int base_len;
+	int	i;
+	int	sign;
+	int	result;
+	int	base_len;
 
 	i = 0;
 	sign = 1;
@@ -92,9 +105,9 @@ int     ft_atoi_base(char *str, char *base)
 }
 
 // returns index of c in str, or -1 if c is not in str
-int     index_of(char *str, char c)
+int	index_of(char *str, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -107,10 +120,10 @@ int     index_of(char *str, char c)
 }
 
 // counts the number of digits num will need to be represented in a given base 
-int     count_digits_base(int num, int base_len)
+int	count_digits_base(int num, int base_len)
 {
-	int     digits;
-	long    n;
+	int		digits;
+	long	n;
 
 	n = num;
 	digits = 0;
@@ -129,39 +142,41 @@ int     count_digits_base(int num, int base_len)
 	return (digits);
 }
 
-#include <stdio.h>
-void    test(char *nbr, char *base_from, char *base_to)
-{
-    char *res;
+// #include <stdio.h>
+// void	test(char *nbr, char *base_from, char *base_to)
+// {
+// 	char	*res;
 
-    res = ft_convert_base(nbr, base_from, base_to);
-    if (res == NULL)
-        printf("Invalid base or malloc failed\n");
-    else
-    {
-        printf("Convert '%s': from base '%s' -> to base '%s' | Result: %s\n", nbr, base_from, base_to, res);
-        free(res);
-    }
-}
+// 	res = ft_convert_base(nbr, base_from, base_to);
+// 	if (res == NULL)
+// 		printf("Invalid base or malloc failed\n");
+// 	else
+// 	{
+// 		printf("Convert '%s': ", nbr);
+// 		printf("from base '%s' -> to base '%s'", base_from, base_to);
+// 		printf(" | Result: %s\n", res);
+// 		free(res);
+// 	}
+// }
 
-int     main(void)
-{
-    printf("--- Simple Cases ---\n");
-    test("42", "0123456789", "01");              // Decimal to Binary
-    test("101010", "01", "0123456789");          // Binary to Decimal
-    test("ff", "0123456789abcdef", "0123456789"); // Hex to Decimal
-    test("  -2a", "0123456789abcdef", "01");     // Hex to Binary
+// int	main(void)
+// {
+//     printf("--- Simple Cases ---\n");
+//     test("42", "0123456789", "01");              // Decimal to Binary
+//     test("101010", "01", "0123456789");          // Binary to Decimal
+//     test("ff", "0123456789abcdef", "0123456789"); // Hex to Decimal
+//     test("  -2a", "0123456789abcdef", "01");     // Hex to Binary
 
-    printf("\n--- Edge Cases ---\n");
-    test("0", "0123456789", "0123456789abcdef"); // Zero
-    test("-2147483648", "0123456789", "0123456789"); // INT_MIN
-    test("2147483647", "0123456789", "0123456789");  // INT_MAX
+//     printf("\n--- Edge Cases ---\n");
+//     test("0", "0123456789", "0123456789abcdef"); // Zero
+//     test("-2147483648", "0123456789", "0123456789"); // INT_MIN
+//     test("2147483647", "0123456789", "0123456789");  // INT_MAX
 
-    printf("\n--- Invalid Bases ---\n");
-    test("10", "0", "0123456789");               // base_from too short
-    test("10", "0123456789", "0123456+");        // forbidden char on base_to
-    test("10", "011", "0123456789");             // base_from with duplicates
-    test("10", "0123456789", " ");               // base_to with spaces
+//     printf("\n--- Invalid Bases ---\n");
+//     test("10", "0", "0123456789");               // base_from too short
+//     test("10", "0123456789", "0123456+");        // forbidden char on base_to
+//     test("10", "011", "0123456789");             // base_from with duplicates
+//     test("10", "0123456789", " ");               // base_to with spaces
 
-    return (0);
-}
+//     return (0);
+// }
