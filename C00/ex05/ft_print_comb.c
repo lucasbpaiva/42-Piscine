@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 17:16:11 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/03/31 17:28:07 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/03/31 17:50:17 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void	ft_print_comb(void)
 		}
 		i++;
 	}
+	write(1, "\n", 1);
 }
 
 // int	main(void)
 // {
 // 	ft_print_comb();
-// 	write(1, "\n", 1);
 // 	return (0);
 // }
