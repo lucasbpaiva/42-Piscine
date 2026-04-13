@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 11:51:18 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/04/13 15:42:31 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/04/13 16:14:52 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	ft_strcmp(char *s1, char *s2)
 // 	char	*s1;
 // 	char	*s2;
 
-// 	s1 = "hello";
-// 	s2 = "Hello";
+// 	s1 = "Hello";
+// 	s2 = "hello";
 // 	printf("s1: '%s'\n", s1);
 // 	printf("s2: '%s'\n", s2);
-// 	printf("ft_strcmp(s1, s2): %u\n", ft_strcmp(s1, s2));
+// 	printf("ft_strcmp(s1, s2): %d\n", ft_strcmp(s1, s2));
 // 	return (0);
 // }
