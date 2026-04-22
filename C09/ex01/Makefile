@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/04/22 12:20:16 by lbalderr          #+#    #+#              #
+#    Updated: 2026/04/22 12:20:50 by lbalderr         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 SRCS	= srcs/ft_putchar.c srcs/ft_swap.c srcs/ft_putstr.c srcs/ft_strlen.c srcs/ft_strcmp.c
 OBJS	= $(SRCS:.c=.o)
 INCS	= includes
