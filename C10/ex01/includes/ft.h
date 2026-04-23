@@ -6,14 +6,17 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 22:43:24 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/04/22 22:59:04 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/04/23 13:40:06 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_H
 # define FT_H
 
+# define BUF_SIZE 4096
+
 void	ft_putstr_fd(int fd, char *str);
-void	ft_display_content(int fd);
+void	ft_display_content(int fd, char *prog_name, char *file_name);
+void	ft_display_error(char *prog_name, char *file_name);
 
 #endif
