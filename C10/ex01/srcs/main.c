@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 22:42:02 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/04/22 23:08:59 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/04/23 13:41:19 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	main(int argc, char *argv[])
 	int	fd;
 
 	if (argc == 1)
-		ft_display_content(0);
+	{
+		ft_display_content(0, argv[0], "stdin");
+		return (0);
+	}
 	i = 1;
 	while (i < argc)
 	{
@@ -29,9 +32,10 @@ int	main(int argc, char *argv[])
 			ft_display_error(argv[0], argv[i]);
 		else
 		{
-			ft_display_content(fd);
+			ft_display_content(fd, argv[0], argv[i]);
 			close(fd);
 		}
+		i++;
 	}
 	return (0);
 }
