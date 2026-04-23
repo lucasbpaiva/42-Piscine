@@ -6,16 +6,14 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 22:57:46 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/04/22 22:58:25 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/04/23 13:43:06 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "ft.h"
 
-#define BUF_SIZE 4096
-
-void	ft_display_content(int fd)
+void	ft_display_content(int fd, char *prog_name, char *file_name)
 {
 	int		bytes_read;
 	char	buf[BUF_SIZE];
@@ -27,10 +25,9 @@ void	ft_display_content(int fd)
 			break ;
 		if (bytes_read == -1)
 		{
-			ft_putstr_fd(2, "Cannot read file.\n");
+			ft_display_error(prog_name, file_name);
 			break ;
 		}
 		write(1, buf, bytes_read);
 	}
-	close(fd);
 }
