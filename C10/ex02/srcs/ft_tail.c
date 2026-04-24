@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 17:06:02 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/04/24 15:25:56 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/04/24 15:51:04 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	load_buf(int fd, int nb, char *buf)
 void	display_last_n_bytes(int fd, int nb)
 {
 	char	*buf;
-	char	tmp[4096];
 	int		bytes_read;
 	int		tail_start;
 
