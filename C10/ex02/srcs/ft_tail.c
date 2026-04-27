@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 17:06:02 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/04/24 17:05:47 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/04/27 15:28:41 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include <unistd.h>
 #include "ft.h"
 
-int	load_buf(int fd, int nb, char *buf, t_info *info)
+long	load_buf(int fd, int nb, char *buf, t_info *info)
 {
 	char	tmp[4096];
-	int		index;
+	long	index;
 	int		bytes_read;
 	int		i;
 
@@ -46,7 +46,7 @@ int	load_buf(int fd, int nb, char *buf, t_info *info)
 void	display_last_n_bytes(int fd, int nb, t_info *info)
 {
 	char	*buf;
-	int		bytes_read;
+	long	bytes_read;
 	int		tail_start;
 
 	if (nb <= 0)
