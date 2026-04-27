@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 14:07:56 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/04/27 15:11:21 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/04/27 15:24:51 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	display_offset_error(char *argv[])
 	ft_putstr_fd(": Invalid argument\n", 2);
 }
 
-void	display_file_header(char *filename, int pos)
+void	display_file_header(char *filename, int is_first)
 {
-	if (pos != 3)
+	if (!is_first)
 		write(1, "\n", 1);
 	ft_putstr_fd("==> ", 1);
 	ft_putstr_fd(filename, 1);
@@ -35,6 +35,7 @@ void	process_files(int argc, char *argv[], int nb, t_info *info)
 {
 	int	i;
 	int	fd;
+	int	is_first;
 
 	i = 3;
 	while (i < argc)
@@ -46,7 +47,12 @@ void	process_files(int argc, char *argv[], int nb, t_info *info)
 		else
 		{
 			if (argc > 4)
-				display_file_header(argv[i], i);
+			{
+				is_first = 0;
+				if (i == 3)
+					is_first = 1;
+				display_file_header(argv[i], is_first);
+			}
 			display_last_n_bytes(fd, nb, info);
 			close(fd);
 		}
@@ -70,6 +76,7 @@ int	main(int argc, char *argv[])
 		}
 		if (argc == 3)
 		{
+			info.file = "stdin";
 			display_last_n_bytes(0, nb, &info);
 			return (0);
 		}
