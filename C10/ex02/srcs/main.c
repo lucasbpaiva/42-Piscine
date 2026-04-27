@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 14:07:56 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/04/27 15:54:12 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/04/27 16:13:07 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	main(int argc, char *argv[])
 		}
 		process_files(argc, argv, nb, &info);
 	}
-	if (argc < 3)
+	else
 		display_argreq_error(argv[0]);
 	return (0);
 }
