@@ -1,0 +1,36 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/04/27 16:55:02 by lbalderr          #+#    #+#              #
+#    Updated: 2026/04/27 16:56:05 by lbalderr         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+SRCS	= srcs/main.c
+OBJS	= $(SRCS:.c=.o)
+INCS	= includes
+NAME	= ft_hexdump
+CC		= cc
+CFLAGS	= -Wall -Wextra -Werror
+
+%.o: %.c
+	$(CC) $(CFLAGS) -I $(INCS) -c $< -o $@
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -I $(INCS) $(OBJS) -o $(NAME)
+
+all: $(NAME)
+
+clean:
+	rm -f $(OBJS)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
