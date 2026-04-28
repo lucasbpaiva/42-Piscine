@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 17:22:58 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/04/28 16:34:21 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/04/28 17:34:08 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # define FT_H
 
 # define HEX "0123456789abcdef"
+
+#define SIZE 16
 
 typedef struct s_stream
 {
@@ -26,6 +28,7 @@ typedef struct s_stream
 }	t_stream;
 
 int		ft_strcmp(char *s1, char *s2);
+int		is_same_buf(unsigned char *buf1, unsigned char *buf2);
 void	ft_hexdump(t_stream *s);
 void	print_offset(long offset);
 void	ft_putstr_fd(char *str, int fd);
@@ -33,5 +36,6 @@ void	ft_display_option_error(char *prog_name);
 void	print_hex_content(unsigned char *buf, int n);
 void	print_ascii_content(unsigned char *buf, int n);
 void	ft_display_error(char *prog_name, char *file_name);
+void	copy_buf(unsigned char *dest, unsigned char *src, int n);
 
 #endif
