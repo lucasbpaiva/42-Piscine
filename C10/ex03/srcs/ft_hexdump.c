@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 17:19:51 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/04/27 17:43:39 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/04/27 22:03:17 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,25 @@ void	print_offset(long offset)
 	}
 	ft_putstr_fd(result, 1);
 	ft_putstr_fd("  ", 1);
+}
+
+void	print_hex_content(unsigned char *buf, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < 16)
+	{
+		if (i < n)
+		{
+			write(1, &HEX[buf[i] / 16], 1);
+			write(1, &HEX[buf[i] % 16], 1);
+			write(1, " ", 1);
+		}
+		else
+			ft_putstr_fd("   ", 1);
+		if (i == 7 || i == 15)
+			write(1, " ", 1);
+		i++;
+	}
 }
