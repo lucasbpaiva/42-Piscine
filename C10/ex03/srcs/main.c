@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:58:06 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/04/28 16:35:01 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/04/28 17:38:25 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	initialize_stream(t_stream *s, int argc, char *argv[])
 	s->curr_arg = 2;
 	s->fd = -1;
 	s->offset = 0;
+	s->squeeze = 0;
 }
 
 int	main(int argc, char *argv[])
