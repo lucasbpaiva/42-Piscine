@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 17:22:58 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/04/28 17:34:08 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/04/28 17:43:49 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 
 # define HEX "0123456789abcdef"
 
-#define SIZE 16
+# define SIZE 16
+
+typedef unsigned char uc;
 
 typedef struct s_stream
 {
@@ -25,6 +27,7 @@ typedef struct s_stream
 	int		curr_arg;
 	int		fd;
 	long	offset;
+	int		squeeze;
 }	t_stream;
 
 int		ft_strcmp(char *s1, char *s2);
