@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:58:06 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/04/28 17:38:25 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/04/29 15:05:34 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,24 @@ void	initialize_stream(t_stream *s, int argc, char *argv[])
 {
 	s->argc = argc;
 	s->argv = argv;
-	s->curr_arg = 2;
 	s->fd = -1;
 	s->offset = 0;
 	s->squeeze = 0;
+	if (argc > 1 && ft_strcmp(argv[1], "-C") == 0)
+	{
+		s->curr_arg = 2;
+		s->mode = 1;
+	}
+	else
+	{
+		s->curr_arg = 1;
+		s->mode = 0;
+	}
+	if (s->curr_arg == argc)
+	{
+		s->argc++;
+		s->fd = 0;
+	}
 }
 
 int	main(int argc, char *argv[])
@@ -27,18 +41,6 @@ int	main(int argc, char *argv[])
 	t_stream	s;
 
 	initialize_stream(&s, argc, argv);
-	if (argc >= 2 && ft_strcmp(argv[1], "-C") == 0)
-	{
-		if (argc == 2)
-		{
-			s.argc = 3;
-			s.fd = 0;
-			ft_hexdump(&s);
-		}
-		else
-			ft_hexdump(&s);
-	}
-	else
-		ft_display_option_error(argv[0]);
+	ft_hexdump(&s);
 	return (0);
 }
