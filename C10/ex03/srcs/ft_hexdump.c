@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 17:19:51 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/04/28 17:55:00 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/04/29 14:44:33 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	close_current_file(t_stream *s)
 	s->curr_arg++;
 }
 
-int	get_next_chunk(t_stream *s, uc *buf)
+int	get_next_chunk(t_stream *s, t_uc *buf)
 {
 	int		bytes_read;
 	int		total_collected;
@@ -50,7 +50,7 @@ int	get_next_chunk(t_stream *s, uc *buf)
 	return (total_collected);
 }
 
-void	process_chunk(t_stream *s, uc *buf, uc *prev, int n)
+void	process_chunk(t_stream *s, t_uc *buf, t_uc *prev, int n)
 {
 	if (s->offset > 0 && n == SIZE && is_same_buf(buf, prev))
 	{
@@ -62,9 +62,14 @@ void	process_chunk(t_stream *s, uc *buf, uc *prev, int n)
 	}
 	else
 	{
-		print_offset(s->offset);
-		print_hex_content(buf, n);
-		print_ascii_content(buf, n);
+		print_offset(s->offset, s->mode);
+		if (s->mode == 0)
+			print_hex_pairs(buf, n);
+		else if (s->mode == 1)
+		{
+			print_hex_content(buf, n);
+			print_ascii_content(buf, n);
+		}
 		copy_buf(prev, buf, n);
 		s->squeeze = 0;
 	}
@@ -72,9 +77,9 @@ void	process_chunk(t_stream *s, uc *buf, uc *prev, int n)
 
 void	ft_hexdump(t_stream *s)
 {
-	uc	buf[SIZE];
-	uc	prev[SIZE];
-	int	n;
+	t_uc	buf[SIZE];
+	t_uc	prev[SIZE];
+	int		n;
 
 	n = get_next_chunk(s, buf);
 	while (n > 0)
@@ -85,7 +90,7 @@ void	ft_hexdump(t_stream *s)
 	}
 	if (s->offset > 0)
 	{
-		print_offset(s->offset);
+		print_offset(s->offset, s->mode);
 		ft_putstr_fd("\n", 1);
 	}
 }
