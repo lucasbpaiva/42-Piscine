@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 11:28:26 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/04/29 15:27:40 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/04/29 15:41:06 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,13 @@ void	print_offset(long offset, int mode)
 		i--;
 	}
 	ft_putstr_fd(result, 1);
-	write(1, " ", 1);
-	if (mode == 1)
-		write(1, " ", 1);
 }
 
 void	print_hex_content(unsigned char *buf, int n)
 {
 	int	i;
 
+	write(1, "  ", 2);
 	i = 0;
 	while (i < 16)
 	{
@@ -86,6 +84,7 @@ void	print_hex_pairs(unsigned char *buf, int n)
 {
 	int	i;
 
+	write(1, " ", 1);
 	i = 0;
 	while (i < 16)
 	{
