@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 17:19:51 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/04/29 14:44:33 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/04/29 16:46:32 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-void	close_current_file(t_stream *s)
+void	close_current_file(t_stream *s, int read_return)
 {
+	if (read_return < 0)
+		ft_display_error(s->argv[0], s->argv[s->curr_arg]);
 	close(s->fd);
 	s->fd = -1;
 	s->curr_arg++;
@@ -43,7 +45,7 @@ int	get_next_chunk(t_stream *s, t_uc *buf)
 		}
 		bytes_read = read(s->fd, buf + total_collected, SIZE - total_collected);
 		if (bytes_read <= 0)
-			close_current_file(s);
+			close_current_file(s, bytes_read);
 		else
 			total_collected += bytes_read;
 	}
