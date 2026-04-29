@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 15:29:23 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/04/28 16:34:10 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/04/29 16:54:38 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,4 @@ void	ft_display_error(char *prog_name, char *file_name)
 	ft_putstr_fd(": ", 2);
 	ft_putstr_fd(strerror(errno), 2);
 	ft_putstr_fd("\n", 2);
-}
-
-void	ft_display_option_error(char *prog_name)
-{
-	ft_putstr_fd(basename(prog_name), 2);
-	ft_putstr_fd(": requires an option\n", 2);
-	ft_putstr_fd("usage: ", 2);
-	ft_putstr_fd(basename(prog_name), 2);
-	ft_putstr_fd(" -C [file ...]\n", 2);
 }
