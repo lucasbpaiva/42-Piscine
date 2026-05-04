@@ -6,11 +6,11 @@
 #    By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/30 15:44:39 by lbalderr          #+#    #+#              #
-#    Updated: 2026/04/30 15:49:27 by lbalderr         ###   ########.fr        #
+#    Updated: 2026/05/04 12:47:57 by lbalderr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= 
+SRCS	= srcs/do-op.c srcs/ft_atoi.c srcs/ft_putnbr.c srcs/ft_putstr_fd.c srcs/ft_strlen.c srcs/main.c srcs/operations.c
 OBJS	= $(SRCS:.c=.o)
 INCS	= includes
 NAME	= do-op
