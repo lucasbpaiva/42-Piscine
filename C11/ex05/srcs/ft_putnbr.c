@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/30 15:46:04 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/05/04 11:26:41 by lbalderr         ###   ########.fr       */
+/*   Created: 2026/05/04 11:25:24 by lbalderr          #+#    #+#             */
+/*   Updated: 2026/05/04 11:25:28 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
+#include <unistd.h>
 
-# define FT_H
+void	ft_putnbr(int nb)
+{
+	long	num;
+	char	digit;
 
-int		add(int a, int b);
-int		sub(int a, int b);
-int		mul(int a, int b);
-int		div(int a, int b);
-int		mod(int a, int b);
-int		ft_atoi(char *str);
-void	ft_putnbr(int nb);
-
-#endif
+	num = nb;
+	if (num < 0)
+	{
+		write(1, "-", 1);
+		num *= -1;
+	}
+	if (num >= 10)
+		ft_putnbr(num / 10);
+	digit = (num % 10) + '0';
+	write(1, &digit, 1);
+}
