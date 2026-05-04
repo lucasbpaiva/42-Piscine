@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 16:11:11 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/05/04 11:57:30 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/05/04 12:56:36 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	do_op(int a, int b, char *op)
 {
 	int	(*operations[5])(int, int);
 	int	index;
-	int	result;
 
 	operations[0] = add;
 	operations[1] = sub;
@@ -48,10 +47,10 @@ void	do_op(int a, int b, char *op)
 	index = get_op_index(op[0]);
 	if (index == -1)
 		write(1, "0", 1);
-	if (index == 3 && b == 0)
-		ft_putstr_fd("Stop : division by zero\n", 1);
+	else if (index == 3 && b == 0)
+		ft_putstr_fd("Stop : division by zero", 1);
 	else if (index == 4 && b == 0)
-		ft_putstr_fd("Stop : modulo by zero\n", 1);
+		ft_putstr_fd("Stop : modulo by zero", 1);
 	else
 		ft_putnbr(operations[index](a, b));
 }
