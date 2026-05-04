@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/30 15:46:04 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/05/04 12:01:47 by lbalderr         ###   ########.fr       */
+/*   Created: 2026/05/04 12:01:22 by lbalderr          #+#    #+#             */
+/*   Updated: 2026/05/04 12:01:25 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
+int	ft_strlen(char *str)
+{
+	int	len;
 
-# define FT_H
-
-int		add(int a, int b);
-int		sub(int a, int b);
-int		mul(int a, int b);
-int		div(int a, int b);
-int		mod(int a, int b);
-int		ft_atoi(char *str);
-int		ft_strlen(char *str);
-void	ft_putnbr(int nb);
-void	do_op(int a, int b, char *op);
-void	ft_putstr_fd(char *str, int fd);
-
-#endif
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
+}
