@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 17:20:21 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/05/06 11:38:06 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/05/06 12:02:35 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void	ft_print_list(t_list *node);
 void	ft_list_reverse(t_list **begin_list);
 void	ft_list_push_back(t_list **begin_list, void *data);
 void	ft_list_push_front(t_list **begin_list, void *data);
+void	ft_list_foreach(t_list *begin_list, void (*f)(void *));
 
 #endif
