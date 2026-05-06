@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.h                                          :+:      :+:    :+:   */
+/*   ft_list_push_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 17:20:21 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/05/06 11:32:21 by lbalderr         ###   ########.fr       */
+/*   Created: 2026/05/05 21:46:34 by lbalderr          #+#    #+#             */
+/*   Updated: 2026/05/05 22:03:53 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIST_H
+#include "ft_list.h"
 
-# define FT_LIST_H
-
-typedef struct s_list
+void	ft_list_push_back(t_list **begin_list, void *data)
 {
-	struct s_list	*next;
-	void			*data;
-}	t_list;
+	t_list	*new_elem;
+	t_list	*ptr;
 
-t_list	*ft_create_elem(void *data);
-int		ft_list_size(t_list *begin_list);
-void	ft_print_list(t_list *node);
-void	ft_list_push_back(t_list **begin_list, void *data);
-void	ft_list_push_front(t_list **begin_list, void *data);
-
-#endif
+	if (!begin_list)
+		return ;
+	new_elem = ft_create_elem(data);
+	if (!new_elem)
+		return ;
+	if (!(*begin_list))
+		*begin_list = new_elem;
+	else
+	{
+		ptr = *begin_list;
+		while (ptr->next)
+			ptr = ptr->next;
+		ptr->next = new_elem;
+	}
+}
