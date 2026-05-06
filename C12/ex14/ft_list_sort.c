@@ -6,11 +6,30 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 17:21:36 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/05/06 17:47:36 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/05/06 17:59:26 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
+
+t_list	*split_list(t_list *head)
+{
+	t_list	*fast;
+	t_list	*slow;
+	t_list	*temp;
+
+	fast = head;
+	slow = head;
+	while (fast && fast->next)
+	{
+		fast = fast->next->next;
+		if (fast)
+			slow = slow->next;
+	}
+	temp = slow->next;
+	slow->next = 0;
+	return (temp);
+}
 
 t_list	*merge_sort(t_list *head)
 {
