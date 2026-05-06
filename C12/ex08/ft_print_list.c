@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 11:18:29 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/05/06 11:24:53 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/05/06 11:41:10 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_print_list(t_list *node)
 {
 	while (node)
 	{
-		printf("%s", node->data);
+		printf("%s", (char *)node->data);
 		if (node->next)
 			printf(" -> ");
 		node = node->next;
