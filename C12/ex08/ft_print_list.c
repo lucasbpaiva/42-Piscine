@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.h                                          :+:      :+:    :+:   */
+/*   ft_print_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 17:20:21 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/05/06 11:25:29 by lbalderr         ###   ########.fr       */
+/*   Created: 2026/05/06 11:18:29 by lbalderr          #+#    #+#             */
+/*   Updated: 2026/05/06 11:24:53 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIST_H
+#include "ft_list.h"
+#include <stdio.h>
 
-# define FT_LIST_H
-
-typedef struct s_list
+void	ft_print_list(t_list *node)
 {
-	struct s_list	*next;
-	void			*data;
-}	t_list;
-
-t_list	*ft_create_elem(void *data);
-int		ft_list_size(t_list *begin_list);
-void	ft_print_list(t_list *node);
-void	ft_list_push_front(t_list **begin_list, void *data);
-
-#endif
+	while (node)
+	{
+		printf("%s", node->data);
+		if (node->next)
+			printf(" -> ");
+		node = node->next;
+	}
+	printf(" -> NULL");
+}
