@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 17:21:36 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/05/06 21:06:38 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/05/06 21:13:14 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,5 @@ void	ft_list_sort(t_list **begin_list, int (*cmp)())
 {
 	if (!begin_list || !cmp)
 		return ;
-	begin_list = merge_sort(*begin_list, cmp);
+	*begin_list = merge_sort(*begin_list, cmp);
 }
