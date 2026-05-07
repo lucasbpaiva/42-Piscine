@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 17:21:36 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/05/06 21:35:22 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/05/07 14:58:46 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_list	*merge_sort(t_list *head, int (*cmp)(void *data1, void *data2))
 	return (merge_lists(head, second, cmp));
 }
 
-void	ft_list_sort(t_list **begin_list, int (*cmp)(void *data1, void *data2))
+void	ft_list_sort(t_list **begin_list, int (*cmp)())
 {
 	if (!begin_list || !cmp)
 		return ;
