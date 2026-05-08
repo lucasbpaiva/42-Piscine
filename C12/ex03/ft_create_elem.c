@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.h                                          :+:      :+:    :+:   */
+/*   ft_create_elem.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 17:20:21 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/05/08 11:17:58 by lbalderr         ###   ########.fr       */
+/*   Created: 2026/05/04 16:57:24 by lbalderr          #+#    #+#             */
+/*   Updated: 2026/05/04 17:14:54 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIST_H
+#include <stdlib.h>
+#include "ft_list.h"
 
-# define FT_LIST_H
-
-typedef struct s_list
+t_list	*ft_create_elem(void *data)
 {
-	struct s_list	*next;
-	void			*data;
-}	t_list;
+	t_list	*new_elem;
 
-int		ft_list_size(t_list *begin_list);
-void	ft_putstr(char *str);
-void	ft_print_list(t_list *node);
-void	ft_list_push_front(t_list **begin_list, void *data);
-t_list	*ft_create_elem(void *data);
-t_list	*ft_list_last(t_list *begin_list);
-t_list	*ft_list_push_strs(int size, char **strs);
-
-#endif
+	new_elem = malloc(sizeof(t_list));
+	if (!new_elem)
+		return (NULL);
+	new_elem->data = data;
+	new_elem->next = NULL;
+	return (new_elem);
+}
