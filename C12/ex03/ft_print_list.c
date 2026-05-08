@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.h                                          :+:      :+:    :+:   */
+/*   ft_print_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 17:20:21 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/05/08 11:12:27 by lbalderr         ###   ########.fr       */
+/*   Created: 2026/05/06 11:18:29 by lbalderr          #+#    #+#             */
+/*   Updated: 2026/05/07 17:09:40 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIST_H
+#include "ft_list.h"
+#include <unistd.h>
 
-# define FT_LIST_H
-
-typedef struct s_list
+void	ft_putstr(char *str)
 {
-	struct s_list	*next;
-	void			*data;
-}	t_list;
+	while (*str)
+		write(1, str++, 1);
+}
 
-int		ft_list_size(t_list *begin_list);
-void	ft_putstr(char *str);
-void	ft_print_list(t_list *node);
-void	ft_list_push_front(t_list **begin_list, void *data);
-t_list	*ft_create_elem(void *data);
-t_list	*ft_list_push_strs(int size, char **strs);
-
-#endif
+void	ft_print_list(t_list *node)
+{
+	while (node)
+	{
+		ft_putstr((char *)node->data);
+		if (node->next)
+			ft_putstr(" -> ");
+		node = node->next;
+	}
+	ft_putstr(" -> NULL\n");
+}

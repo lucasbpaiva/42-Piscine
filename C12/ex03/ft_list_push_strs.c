@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.h                                          :+:      :+:    :+:   */
+/*   ft_list_push_strs.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 17:20:21 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/05/08 11:12:27 by lbalderr         ###   ########.fr       */
+/*   Created: 2026/05/05 22:45:49 by lbalderr          #+#    #+#             */
+/*   Updated: 2026/05/05 23:06:48 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIST_H
+#include "ft_list.h"
 
-# define FT_LIST_H
-
-typedef struct s_list
+t_list	*ft_list_push_strs(int size, char **strs)
 {
-	struct s_list	*next;
-	void			*data;
-}	t_list;
+	int		i;
+	t_list	*new_elem;
+	t_list	*head;
 
-int		ft_list_size(t_list *begin_list);
-void	ft_putstr(char *str);
-void	ft_print_list(t_list *node);
-void	ft_list_push_front(t_list **begin_list, void *data);
-t_list	*ft_create_elem(void *data);
-t_list	*ft_list_push_strs(int size, char **strs);
-
-#endif
+	if (!strs || size <= 0)
+		return (0);
+	i = 0;
+	head = 0;
+	while (i < size)
+	{
+		new_elem = ft_create_elem(strs[i]);
+		if (new_elem)
+		{
+			new_elem->next = head;
+			head = new_elem;
+		}
+		i++;
+	}
+	return (head);
+}
