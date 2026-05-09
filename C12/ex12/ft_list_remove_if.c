@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:35:52 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/05/06 15:26:07 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/05/08 21:25:07 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_list_remove_if(t_list **begin_list, void *data_ref,
 	list_ptr = *begin_list;
 	while (list_ptr)
 	{
-		if ((*cmp)(list_ptr->data, data_ref) == 0)
+		if (((int (*)(void *, void *))cmp)(list_ptr->data, data_ref) == 0)
 		{
 			temp = list_ptr;
 			if (prev == 0)
