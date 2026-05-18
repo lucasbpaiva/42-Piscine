@@ -6,12 +6,18 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 15:22:45 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/05/07 15:54:49 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/05/18 17:28:57 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 #include <stdio.h>
+
+void	free_nothing(void *data)
+{
+	(void)data;
+	return ;
+}
 
 int	main(int argc, char *argv[])
 {
@@ -31,5 +37,6 @@ int	main(int argc, char *argv[])
 	}
 	else
 		printf("List does not contain the secret word\n");
+	ft_list_clear(list, free_nothing);
 	return (0);
 }
