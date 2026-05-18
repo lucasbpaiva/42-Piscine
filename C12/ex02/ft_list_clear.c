@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.h                                          :+:      :+:    :+:   */
+/*   ft_list_clear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 17:20:21 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/05/18 10:32:45 by lbalderr         ###   ########.fr       */
+/*   Created: 2026/05/05 23:49:45 by lbalderr          #+#    #+#             */
+/*   Updated: 2026/05/06 00:11:59 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIST_H
+#include <stdlib.h>
+#include "ft_list.h"
 
-# define FT_LIST_H
-
-typedef struct s_list
+void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
 {
-	struct s_list	*next;
-	void			*data;
-}	t_list;
+	t_list	*head;
+	t_list	*next;
 
-t_list	*ft_create_elem(void *data);
-int		ft_list_size(t_list *begin_list);
-void	ft_list_push_front(t_list **begin_list, void *data);
-void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *));
-
-#endif
+	if (!free_fct)
+		return ;
+	head = begin_list;
+	while (head)
+	{
+		next = head->next;
+		free_fct(head->data);
+		free(head);
+		head = next;
+	}
+}
