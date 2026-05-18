@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 15:28:55 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/05/08 15:52:36 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/05/18 10:58:06 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ void	print_node(t_list *node)
 	else
 		ft_putstr("NULL");
 	ft_putstr("\n");
+}
+
+void	free_nothing(void *data)
+{
+	(void)data;
+	return ;
 }
 
 int	main(int argc, char *argv[])
@@ -40,5 +46,6 @@ int	main(int argc, char *argv[])
 	ft_putstr(".\n.\n.\n");
 	ft_putstr("Node at index 200: ");
 	print_node(ft_list_at(my_list, 200));
+	ft_list_clear(my_list, free_nothing);
 	return (0);
 }
