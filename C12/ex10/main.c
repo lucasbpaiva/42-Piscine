@@ -6,7 +6,7 @@
 /*   By: lbalderr <lbalderr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 16:10:06 by lbalderr          #+#    #+#             */
-/*   Updated: 2026/05/08 17:00:43 by lbalderr         ###   ########.fr       */
+/*   Updated: 2026/05/18 17:16:59 by lbalderr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ void	make_uppercase(void *data)
 	}
 }
 
+void	free_nothing(void *data)
+{
+	(void)data;
+	return ;
+}
+
 int	main(int argc, char *argv[])
 {
 	t_list	*my_list;
@@ -58,5 +64,6 @@ int	main(int argc, char *argv[])
 	ft_list_foreach_if(my_list, make_uppercase, data_ref, len_cmp);
 	ft_print_list(my_list);
 	printf("\n");
+	ft_list_clear(my_list, free_nothing);
 	return (0);
 }
